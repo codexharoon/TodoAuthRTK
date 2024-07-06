@@ -44,18 +44,26 @@ export async function POST(req: NextRequest) {
       {}
     );
 
-    return NextResponse.json(
+    // removing the password property from the user object and send as response
+    isUserExist.password = "";
+
+    const res = NextResponse.json(
       {
         success: true,
         message: "Signin successfully",
+        user: isUserExist,
       },
       {
         status: 200,
       }
-    ).cookies.set("token", token, {
+    );
+
+    res.cookies.set("token", token, {
       httpOnly: true,
       secure: true,
     });
+
+    return res;
   } catch (error) {
     console.log("Internal Server Error - Failed to Signin", error);
     return Response.json(
