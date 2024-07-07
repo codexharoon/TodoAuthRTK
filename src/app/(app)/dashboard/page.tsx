@@ -1,7 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import React, { useEffect } from "react";
 import axios from "axios";
@@ -12,6 +10,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { DeleteTodo } from "@/components/DeleteTodo";
 import { Loader2 } from "lucide-react";
 import { EditTodo } from "@/components/EditTodo";
+import AddTodo from "@/components/AddTodo";
 
 const page = () => {
   const todos = useSelector((state: RootState) => state.todos.todos);
@@ -45,9 +44,8 @@ const page = () => {
         <h1 className="text-4xl text-center font-bold mt-16">
           CodexHaroon - Todo
         </h1>
-        <div className="flex gap-2 mt-5 mb-10">
-          <Input type="text" placeholder="add a todo" />
-          <Button>Add</Button>
+        <div className="mt-5 mb-10 w-full">
+          <AddTodo />
         </div>
 
         <Separator className="mb-5" />

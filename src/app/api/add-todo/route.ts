@@ -65,10 +65,14 @@ export async function POST(req: NextRequest) {
 
     await user.save();
 
+    // Find the newly added todo (last item in the array)
+    const addedTodo = user.todos[user.todos.length - 1];
+
     return NextResponse.json(
       {
         success: true,
         message: "Todo added successfully",
+        todo: addedTodo,
       },
       { status: 200 }
     );

@@ -71,7 +71,7 @@ export function EditTodo({ todo }: { todo: Todo }) {
       const axiosErr = error as AxiosError<any>;
       toast({
         title: "Failed",
-        description: axiosErr.response?.data.message || "An error occurred",
+        description: axiosErr.response?.data.message || "Error to update todo",
         variant: "destructive",
       });
     } finally {
@@ -101,7 +101,7 @@ export function EditTodo({ todo }: { todo: Todo }) {
                 <FormItem>
                   <FormLabel>Todo</FormLabel>
                   <FormControl>
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="Edit your TODO here..." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -125,7 +125,7 @@ export function EditTodo({ todo }: { todo: Todo }) {
             />
 
             <DialogFooter>
-              <Button type="submit">
+              <Button type="submit" disabled={loading}>
                 {loading ? (
                   <span className="flex items-center gap-2">
                     <Loader2 className="h-4 w-4 animate-spin" />{" "}
