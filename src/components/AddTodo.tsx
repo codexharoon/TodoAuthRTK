@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -48,7 +47,7 @@ const AddTodo = () => {
           title: "Success",
           description: data.message,
         });
-        values.title = "";
+        form.reset();
       } else {
         throw new Error(data.message);
       }
