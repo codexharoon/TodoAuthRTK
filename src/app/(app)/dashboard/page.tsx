@@ -11,6 +11,7 @@ import { setTodos } from "@/app/Reducers/todoReducer";
 import { useToast } from "@/components/ui/use-toast";
 import { DeleteTodo } from "@/components/DeleteTodo";
 import { Loader2 } from "lucide-react";
+import { EditTodo } from "@/components/EditTodo";
 
 const page = () => {
   const todos = useSelector((state: RootState) => state.todos.todos);
@@ -62,9 +63,13 @@ const page = () => {
                 key={todo.id}
                 className="flex items-center justify-between p-2 my-2 bg-slate-100 rounded-lg"
               >
-                <p>{todo.title}</p>
+                {todo.isCompleted ? (
+                  <p className="line-through">{todo.title}</p>
+                ) : (
+                  <p>{todo.title}</p>
+                )}
                 <div className="flex gap-2">
-                  <Button variant={"outline"}>Edit</Button>
+                  <EditTodo todo={todo} />
                   <DeleteTodo id={todo._id as string} />
                 </div>
               </div>
