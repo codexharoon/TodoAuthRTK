@@ -90,7 +90,7 @@ export function EditTodo({ todo }: { todo: Todo }) {
         <DialogHeader>
           <DialogTitle>Edit Todo</DialogTitle>
           <DialogDescription>
-            Make changes to your Todo here. Click save when you're done.
+            Make changes to your Todo here. Click save when you are done.
           </DialogDescription>
         </DialogHeader>
 

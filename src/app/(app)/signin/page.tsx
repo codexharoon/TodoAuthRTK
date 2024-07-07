@@ -21,7 +21,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 
-const Signup = () => {
+const Signin = () => {
   const [formSubmitLoading, setFormSubmitLoading] = useState<boolean>(false);
 
   const { toast } = useToast();
@@ -125,10 +125,10 @@ const Signup = () => {
 
         <div className="text-center mt-5">
           <p className="text-xs">
-            Already have an account?{" "}
-            <Link href="/signin">
+            Do not have an account?{" "}
+            <Link href="/">
               {" "}
-              <span className="text-blue-400">Login</span>
+              <span className="text-blue-400">Sign up</span>
             </Link>
           </p>
         </div>
@@ -137,4 +137,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Signin;

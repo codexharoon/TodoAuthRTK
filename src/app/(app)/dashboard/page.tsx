@@ -14,7 +14,7 @@ import AddTodo from "@/components/AddTodo";
 import Navbar from "@/components/Navbar";
 import { useRouter } from "next/navigation";
 
-const page = () => {
+const Dashboard = () => {
   const todos = useSelector((state: RootState) => state.todos.todos);
   const [fetchTodosLoading, setFetchTodosLoading] = React.useState<boolean>();
   const dispatch = useDispatch();
@@ -108,4 +108,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Dashboard;
