@@ -29,6 +29,7 @@ export function DeleteTodo({ id }: { id: string }) {
         toast({
           title: "Success",
           description: data.message,
+          duration: 3000,
         });
       } else {
         throw new Error(data.message);
@@ -40,6 +41,7 @@ export function DeleteTodo({ id }: { id: string }) {
         title: "Failed",
         description: axiosErr.response?.data.message || "An error occurred",
         variant: "destructive",
+        duration: 3000,
       });
     }
   };

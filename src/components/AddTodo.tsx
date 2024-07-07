@@ -46,6 +46,7 @@ const AddTodo = () => {
         toast({
           title: "Success",
           description: data.message,
+          duration: 3000,
         });
         form.reset();
       } else {
@@ -58,6 +59,7 @@ const AddTodo = () => {
         title: "Failed",
         description: axiosErr.response?.data.message || "Error to add todo",
         variant: "destructive",
+        duration: 3000,
       });
     } finally {
       setLoading(false);

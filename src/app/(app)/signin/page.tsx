@@ -44,11 +44,13 @@ const Signup = () => {
       if (!response.data.success) {
         toast({
           description: response.data.message,
+          duration: 3000,
         });
       } else {
         toast({
           title: "Success",
           description: response.data.message,
+          duration: 3000,
         });
 
         router.replace(`/dashboard`);
@@ -60,6 +62,7 @@ const Signup = () => {
         title: "Failed",
         description: axiosErr.response?.data.message || "An error occurred",
         variant: "destructive",
+        duration: 3000,
       });
     } finally {
       setFormSubmitLoading(false);

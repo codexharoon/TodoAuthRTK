@@ -62,6 +62,7 @@ export function EditTodo({ todo }: { todo: Todo }) {
         toast({
           title: "Success",
           description: data.message,
+          duration: 3000,
         });
       } else {
         throw new Error(data.message);
@@ -73,6 +74,7 @@ export function EditTodo({ todo }: { todo: Todo }) {
         title: "Failed",
         description: axiosErr.response?.data.message || "Error to update todo",
         variant: "destructive",
+        duration: 3000,
       });
     } finally {
       setLoading(false);

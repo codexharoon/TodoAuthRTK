@@ -49,6 +49,7 @@ const Signup = () => {
         toast({
           title: "Success",
           description: response.data.message,
+          duration: 3000,
         });
 
         router.replace(`/signin`);
@@ -60,6 +61,7 @@ const Signup = () => {
         title: "Failed",
         description: axiosErr.response?.data.message || "An error occurred",
         variant: "destructive",
+        duration: 3000,
       });
     } finally {
       setFormSubmitLoading(false);
