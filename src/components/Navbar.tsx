@@ -3,14 +3,12 @@
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 
-const Navbar = () => {
-  const router = useRouter();
-
+const Navbar = ({ signout }: { signout: () => void }) => {
   return (
     <nav className="bg-slate-200 p-5">
       <div className="flex justify-between items-center">
         <span className="text-lg font-bold">Welcome</span>
-        <Button>Signout</Button>
+        <Button onClick={signout}>Signout</Button>
       </div>
     </nav>
   );

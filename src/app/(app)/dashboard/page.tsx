@@ -12,12 +12,35 @@ import { Loader2 } from "lucide-react";
 import { EditTodo } from "@/components/EditTodo";
 import AddTodo from "@/components/AddTodo";
 import Navbar from "@/components/Navbar";
+import { useRouter } from "next/navigation";
 
 const page = () => {
   const todos = useSelector((state: RootState) => state.todos.todos);
   const [fetchTodosLoading, setFetchTodosLoading] = React.useState<boolean>();
   const dispatch = useDispatch();
   const { toast } = useToast();
+  const router = useRouter();
+
+  const signout = async () => {
+    try {
+      const response = await axios.post("/api/signout");
+      const data = response.data;
+
+      if (data.success) {
+        toast({
+          title: "Please Sign in again",
+          description: data.message,
+          duration: 3000,
+        });
+        dispatch(setTodos([]));
+        router.replace("/signin");
+      } else {
+        throw new Error(data.message);
+      }
+    } catch (error) {
+      console.log("error to logout", error);
+    }
+  };
 
   const fetchTodos = async () => {
     setFetchTodosLoading(true);
@@ -33,6 +56,7 @@ const page = () => {
       console.log("error to fetch todos", error);
       const axiosErr = error as AxiosError<any>;
       if (axiosErr.response?.status === 401) {
+        signout();
       }
     } finally {
       setFetchTodosLoading(false);
@@ -44,7 +68,7 @@ const page = () => {
   }, [dispatch]);
   return (
     <main>
-      <Navbar />
+      <Navbar signout={signout} />
       <div className="flex items-start justify-center min-h-screen bg-slate-50">
         <div className="max-w-6xl w-full p-10 mx-6 lg:mx-auto">
           <h1 className="text-4xl text-center font-bold mt-3">Todo</h1>
